@@ -4,7 +4,7 @@
 
 aletheia is a **production ready XAI framework** built to make deep learning models **transparent, auditable, and badass**
 
-perfect for **medical imaging, defense, or any mission critical ML system**
+perfect for **medical imaging, defense, or any mission critical ML system** 
 
 ---
 
