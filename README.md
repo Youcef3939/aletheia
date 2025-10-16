@@ -25,7 +25,7 @@ it answers the essentiel question:
   - "why did my AI make this decision?"
 
 by providing **clear visualizations and metrics**, aletheia turns opaque models into explainable, auditable systems
-
+ 
 ---
 
 ## what is aletheia?
