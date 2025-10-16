@@ -93,7 +93,7 @@ if uploaded_file:
         faith_score = faithfulness_deletion(model, input_tensor, attr_map, target=predicted_class)
         sens_score = sensitivity(attr_map, attr_map_perturbed)
 
-    st.markdown("## XAI metrics")
+    st.markdown("## XAI metrics") 
     cols = st.columns(2)
     with cols[0]:
         st.markdown(f"<div class='metric-card'><h3>Faithfulness</h3><p>{faith_score:.4f}</p></div>", unsafe_allow_html=True)
