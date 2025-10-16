@@ -5,7 +5,6 @@ from utils.logger import get_logger
 
 logger = get_logger("explainers")
 
-
 def generate_explanation(
     model: torch.nn.Module,
     input_tensor: torch.Tensor,
@@ -19,7 +18,7 @@ def generate_explanation(
 
     try:
         if target is None:
-            with torch.no_grad():
+            with torch.no_grad(): 
                 outputs = model(input_tensor)
                 target = torch.argmax(outputs, dim=1).item()
             logger.info(f"no target provided. Using predicted class {target}")
@@ -59,7 +58,7 @@ if __name__ == "__main__":
     import torchvision.models as models
     import torchvision.transforms as transforms
     from PIL import Image
-    import torch
+    import torch 
 
     model = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V2)
     model.eval()
