@@ -2,7 +2,7 @@ import os
 import sys
 import torch
 import streamlit as st
-from PIL import Image
+from PIL import Image 
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if ROOT_DIR not in sys.path:
