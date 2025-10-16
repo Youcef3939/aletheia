@@ -70,7 +70,7 @@ if uploaded_file:
         predicted_class, confidence = infer(model, preprocess, image)
     st.success("inference complete!")
 
-    st.markdown(f"### prediction: class **{predicted_class}** (confidence: {confidence:.4f})")
+    st.markdown(f"### prediction: class **{predicted_class}** (confidence: {confidence:.4f})") 
 
     input_tensor = preprocess(image).unsqueeze(0).to(DEVICE) # type: ignore
 
