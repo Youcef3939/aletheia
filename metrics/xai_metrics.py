@@ -3,7 +3,6 @@ from utils.logger import get_logger
 
 logger = get_logger("metrics")
 
-
 def faithfulness_deletion(model, input_tensor, attr_map, target=None, steps=10):
     model.eval()
     input_clone = input_tensor.clone().detach()
@@ -26,7 +25,6 @@ def faithfulness_deletion(model, input_tensor, attr_map, target=None, steps=10):
     faithfulness_score = 1.0 - sum(drop_values) / len(drop_values)
     logger.info(f"Faithfulness score: {faithfulness_score:.4f}")
     return faithfulness_score
-
 
 def sensitivity(attr_map_original, attr_map_perturbed):
     diff = torch.abs(attr_map_original - attr_map_perturbed).mean().item()
