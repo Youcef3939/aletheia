@@ -6,7 +6,6 @@ __pycache__/
 *$py.class
 logs/
 *.log
-outputs/
 *.png
 *.jpg
 *.jpeg
