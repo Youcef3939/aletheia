@@ -40,7 +40,7 @@ aletheia is:
 
 - a production ready library, modular, extensible, and auditable 
 
-it is designed for real world usage, not just academic demos; drop in your model, run your explainer and see exactly why the AI made its choice
+it is designed for real world usage, not just academic demos; drop in your model, run your explainer and see exactly why the AI made its choice 
 
 ---
 
