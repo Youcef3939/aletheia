@@ -1,4 +1,4 @@
-# 🧠 ALETHEIA, the explainable AI engine
+# 🧠 ALETHEIA: the explainable AI engine
 
 **see inside the black box, know why your AI thinks what it thinks**
 
