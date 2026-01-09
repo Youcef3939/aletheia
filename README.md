@@ -44,7 +44,7 @@ it is designed for real world usage, not just academic demos; drop in your model
 
 ---
 
-## who is it for?
+## who is it for? 
 
 - data scientists needing **trust worthy model explanations**
 
