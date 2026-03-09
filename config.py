@@ -1,5 +1,5 @@
 import os
-import torch # type: ignore
+import torch 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -20,7 +20,7 @@ AVAILABLE_MODELS = {
         "input_size": (224, 224),
         "num_classes": 1000,
     },
-    # add more models here if you contribute
+    
 }
 
 
@@ -77,8 +77,7 @@ def summarize():
     print(f"metrics: {', '.join(DEFAULT_METRICS)}")
     print(f"log file: {LOG_FILE}")
     print(f"visualization: {VIZ_CONFIG['colormap']} (α={VIZ_CONFIG['alpha']})")
-    print("---------------------------------")
-
+    
 
 if __name__ == "__main__":
     summarize()
