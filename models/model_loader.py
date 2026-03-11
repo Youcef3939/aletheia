@@ -7,9 +7,9 @@ from PIL import Image
 from config import DEVICE, AVAILABLE_MODELS, DEFAULT_MODEL
 from utils.logger import get_logger
 
-logger = get_logger("models")
+logger = get_logger("models") 
 def make_model_deeplift_compatible(model):
-    for name, module in Module.named_modules(): # type: ignore
+    for name, module in Module.named_modules(): 
         if isinstance(module, nn.ReLU) and module.inplace:
             module.inplace = False
         return model
