@@ -10,8 +10,7 @@ from explainers.captum_explainers import generate_explanation
 from metrics.xai_metrics import faithfulness_deletion, sensitivity
 
 logger = get_logger("pipeline")
-
-
+ 
 def process_image(image_path: str, model, preprocess, explainer: str = DEFAULT_EXPLAINER):
     try:
         image = Image.open(image_path).convert("RGB")
@@ -19,18 +18,18 @@ def process_image(image_path: str, model, preprocess, explainer: str = DEFAULT_E
 
         predicted_class, confidence = infer(model, preprocess, image)
 
-        attr_map = generate_explanation(model, input_tensor, explainer=explainer, target=predicted_class) # type: ignore
+        attr_map = generate_explanation(model, input_tensor, explainer=explainer, target=predicted_class) 
 
         filename = os.path.basename(image_path)
         overlay_path = os.path.join(OUTPUTS_DIR, f"overlay_{filename}")
         overlayed_image = overlay_heatmap(image, attr_map, save_path=overlay_path)
 
         perturb = input_tensor + 0.01 * torch.randn_like(input_tensor)
-        attr_map_perturbed = generate_explanation(model, perturb, explainer=explainer, target=predicted_class) # type: ignore
+        attr_map_perturbed = generate_explanation(model, perturb, explainer=explainer, target=predicted_class) 
 
         metrics = {
             "faithfulness": faithfulness_deletion(model, input_tensor, attr_map, target=predicted_class),
-            "sensitivity": sensitivity(attr_map, attr_map_perturbed)
+            "sensitivity": sensitivity(attr_map, attr_map_perturbed) 
         }
 
         result = {
@@ -52,7 +51,7 @@ def process_image(image_path: str, model, preprocess, explainer: str = DEFAULT_E
 
 def run_pipeline_on_folder(folder_path: str, model_name: str = DEFAULT_MODEL, explainer: str = DEFAULT_EXPLAINER):
     model, preprocess, _ = load_model(model_name)
-    results = []
+    results = []          
 
     for file in os.listdir(folder_path):
         if file.lower().endswith((".png", ".jpg", ".jpeg")):
