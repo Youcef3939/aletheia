@@ -156,6 +156,70 @@ aletheia/
 
 ---
 
+## diagram
+
+```mermaid
+flowchart TD
+
+subgraph group_entry["Entry points"]
+  node_pipeline["Pipeline<br/>orchestrator<br/>[pipeline.py]"]
+end
+
+subgraph group_core["Core runtime"]
+  node_config["Config<br/>settings<br/>[config.py]"]
+  node_logger["Logger<br/>audit<br/>[logger.py]"]
+end
+
+subgraph group_xai["XAI subsystems"]
+  node_model_loader["Model Loader<br/>model I/O<br/>[model_loader.py]"]
+  node_captum_explainers["Captum Explain<br/>attribution"]
+  node_xai_metrics["XAI Metrics<br/>evaluation<br/>[xai_metrics.py]"]
+  node_viz["Visualization<br/>rendering<br/>[viz.py]"]
+end
+
+subgraph group_ui["User interface"]
+  node_dashboard_app["Dashboard<br/>ui<br/>[app.py]"]
+end
+
+node_pipeline -->|"reads settings"| node_config
+node_pipeline -->|"loads model"| node_model_loader
+node_pipeline -->|"runs explainer"| node_captum_explainers
+node_pipeline -->|"scores explanations"| node_xai_metrics
+node_pipeline -->|"renders outputs"| node_viz
+node_pipeline -->|"logs run"| node_logger
+node_dashboard_app -->|"reads settings"| node_config
+node_dashboard_app -->|"calls backend"| node_pipeline
+node_dashboard_app -->|"displays visuals"| node_viz
+node_dashboard_app -->|"logs activity"| node_logger
+node_config -->|"selects model"| node_model_loader
+node_config -->|"selects explainer"| node_captum_explainers
+node_model_loader -->|"supplies outputs"| node_captum_explainers
+node_captum_explainers -->|"produces attribution"| node_viz
+node_captum_explainers -->|"feeds metrics"| node_xai_metrics
+
+click node_pipeline "https://github.com/youcef3939/aletheia/blob/main/pipeline.py"
+click node_dashboard_app "https://github.com/youcef3939/aletheia/blob/main/dashboard/app.py"
+click node_config "https://github.com/youcef3939/aletheia/blob/main/config.py"
+click node_model_loader "https://github.com/youcef3939/aletheia/blob/main/models/model_loader.py"
+click node_captum_explainers "https://github.com/youcef3939/aletheia/blob/main/explainers/captum_explainers.py"
+click node_xai_metrics "https://github.com/youcef3939/aletheia/blob/main/metrics/xai_metrics.py"
+click node_viz "https://github.com/youcef3939/aletheia/blob/main/utils/viz.py"
+click node_logger "https://github.com/youcef3939/aletheia/blob/main/utils/logger.py"
+
+classDef toneNeutral fill:#f8fafc,stroke:#334155,stroke-width:1.5px,color:#0f172a
+classDef toneBlue fill:#dbeafe,stroke:#2563eb,stroke-width:1.5px,color:#172554
+classDef toneAmber fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#78350f
+classDef toneMint fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#14532d
+classDef toneRose fill:#ffe4e6,stroke:#e11d48,stroke-width:1.5px,color:#881337
+classDef toneIndigo fill:#e0e7ff,stroke:#4f46e5,stroke-width:1.5px,color:#312e81
+classDef toneTeal fill:#ccfbf1,stroke:#0f766e,stroke-width:1.5px,color:#134e4a
+class node_pipeline toneBlue
+class node_config,node_logger toneAmber
+class node_model_loader,node_captum_explainers,node_xai_metrics,node_viz toneMint
+class node_dashboard_app toneRose
+```
+
+
 ## extending aletheia
 
   - add new models     -> drop weights + update config
